@@ -1,0 +1,52 @@
+<style>
+.green{
+  color:green;
+}
+.orange{
+  color:orange;
+}
+.red{
+  color:red;
+}
+</style>
+<div class="row">
+	<div class="col-xl-12">
+		<h1>Random Number from ANU</h1>
+	</div>
+	<div class="col-xl-12" ng-show="noOfRectangleChoice">
+		<h5>
+			Showing last 
+			<select ng-options="choice for choice in noOfRectangleChoice" ng-model="noOfRectangles2Show" ng-init="noOfRectangles2Show=1"></select>
+			random value(s)
+		</h5>
+	</div>
+</div>
+<hr>
+<div ng-show="!meanRandomValue">
+	Getting the first random number from ANU .....
+</div>
+<div class="row" style="min-height:400px">
+	<div class="col-md-4 col-md-6 col-xs-12" ng-repeat="randomValue in randomValues | limitTo:-noOfRectangles2Show">
+		<svg width="400" height="350" >
+			<rect x="50" y="20" width="150" height={{randomValue}} fill="#FF1493" />
+			<animate
+				attributeName="height"
+				begin="0s"
+				dur="1s"
+				from="0"
+				to={{randomValue}}
+			/>
+		</svg>
+	</div>
+</div>
+<hr>
+<div class="row" ng-show="meanRandomValue">
+	<div class="col-md-6 col-sm-12">
+		<h3>Mean Value: <span ng-class="fillColor">{{meanRandomValue | number : 2}}</span></h3>
+	</div>
+	<div class="col-md-6 col-sm-12" ng-show="meanRandomValue">
+		<p><span style="color:red"><b>Red </b></span>shows last value returned is less than the mean</p>
+		<p><span style="color:green"><b>Green </b></span>shows last value returned is greater than the mean</p>
+		<p><span style="color:orange"><b>Orange </b></span>shows last value returned is equal to the mean</p>
+	</div>
+</div>

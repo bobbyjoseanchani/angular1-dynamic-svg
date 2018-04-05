@@ -7,8 +7,9 @@ Instructions to run the website
 2. Run the following two commands to install dependencies
 
 
-	`npm install
-	bower install`
+	`npm install`
+	
+	`bower install`
 3. Once the dependencies are installed, start the server using the following command:
 
 
